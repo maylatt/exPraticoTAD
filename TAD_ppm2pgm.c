@@ -16,17 +16,14 @@ ppm_image * ler_ppm(const char *filename) {
  fscanf(img,"%2s", imgInput->format );
  fscanf(img, "%u", &imgInput->w);
  fscanf(img, "%u", &imgInput->h);
- fscanf(img, "%d", &imgInput->m);
+ fscanf(img, "%d", (int *)&imgInput->m);
 
- printf("formato:%2s\nw:%u\nh:%u \nm:%d\n", imgInput->format, imgInput->w, imgInput->h, imgInput->m);
-
- imgInput->matrix = (ppm_pixel **)malloc((imgInput->h)*sizeof(ppm_pixel *));
+imgInput->matrix = (ppm_pixel **)malloc((imgInput->h)*sizeof(ppm_pixel *));
 
 for(int r = 0 ;r < (imgInput->h); r++){
   imgInput->matrix[r] = (ppm_pixel *)malloc((imgInput->w)*sizeof(ppm_pixel));
    for(int c = 0 ; c < (imgInput->w); c++){
-     fscanf(img,"%d %d %d", &imgInput->matrix[r][c].r, &imgInput->matrix[r][c].g, &imgInput->matrix[r][c].b);
-     //printf("%d %d %d ", imgInput->matrix[r][c].r, imgInput->matrix[r][c].g, imgInput->matrix[r][c].b);
+     fscanf(img,"%d %d %d", (int *)&imgInput->matrix[r][c].r, (int *)&imgInput->matrix[r][c].g, (int *)&imgInput->matrix[r][c].b);
    }
  }
 
@@ -54,7 +51,6 @@ pgm_image * ppm_para_pgm(const ppm_image *ppm) {
    imgOutput->matrix[r] = (pgm_pixel *)malloc((imgOutput->w)*sizeof(pgm_pixel));
     for(int c = 0 ; c < (imgOutput->w); c++){
       imgOutput->matrix[r][c].p = (int)((0.192156863)*(0.30*ppm->matrix[r][c].r + 0.59*ppm->matrix[r][c].g + 0.11*ppm->matrix[r][c].b));
-      printf("%d", imgOutput->matrix[r][c].p);
     }
   }
 

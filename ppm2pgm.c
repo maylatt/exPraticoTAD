@@ -11,6 +11,8 @@
 int main(int argc, char **argv) {
 	if (argc != 3) {
 		//Escreva aqui a verificação de erro
+		printf("Agumentos invalidos! Por favor entre com: ./executableFile input.ppm output.pgm\n");
+		return 1;
 	}
 
 	// Ler a entrada PPM

@@ -16,27 +16,27 @@ typedef unsigned char byte;
 
 /* Estruturas para armazenar a imagem PPM */
 typedef struct {
-	int r, g, b;
+	byte r, g, b;
 } ppm_pixel;
 
 typedef struct {
 	char format[3];
  	unsigned int w;
 	unsigned int h;
-	int m;
+	byte m;
 	ppm_pixel **matrix;
 } ppm_image;
 
 /* Estruturas para acessar a imagem PGM */
 typedef struct {
-	int p;
+	byte p;
 } pgm_pixel;
 
 typedef struct {
 	char format[3];
  	unsigned int w;
 	unsigned int h;
-	int m;
+	byte m;
 	pgm_pixel **matrix;
 } pgm_image;
 
