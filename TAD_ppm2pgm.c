@@ -38,9 +38,7 @@ pgm_image * ppm_para_pgm(const ppm_image *ppm) {
 
   imgOutput = (pgm_image *)malloc(sizeof(pgm_image));
 
-  imgOutput->format[0]= 'P';
-  imgOutput->format[1]= '2';
-  imgOutput->format[2]= '\0';
+  strcpy(imgOutput->format, "P2");
   imgOutput->w = ppm->w;
   imgOutput->h = ppm->h;
   imgOutput->m = 49;
