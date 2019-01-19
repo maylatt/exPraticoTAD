@@ -52,6 +52,9 @@ pgm_image * ppm_para_pgm(const ppm_image *ppm) {
     }
   }
 
+  for(int c=0; c< ppm->h; c++) free(ppm->matrix[c]);
+  free(ppm->matrix);
+
   return imgOutput;
 
 
@@ -75,5 +78,8 @@ void escreve_pgm(const char *filename, const pgm_image *pgm) {
      fprintf(img, "\n");
    }
    fclose(img);
+
+   for(int c=0; c< pgm->h; c++) free(pgm->matrix[c]);
+   free(pgm->matrix);
 
 }
